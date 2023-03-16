@@ -19,7 +19,14 @@ function divide (firstNumber, secondNumber) {
 }
 
 function operate (operator, firstNumber, secondNumber) {
-//
+// 
+    const numbers = Array.from(document.querySelectorAll('.numbers'));
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i].addEventListener('click', () => {
+            let firstNumber = numbers[i].textContent;
+            console.log(firstNumber);
+        });
+    };
 
 
 //Store operator value in variable
@@ -43,6 +50,8 @@ function operate (operator, firstNumber, secondNumber) {
         const operator = divide;
         console.log(operator);
     });
+
+
 
 
 }
