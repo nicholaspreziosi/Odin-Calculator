@@ -19,12 +19,13 @@ function divide (firstNumber, secondNumber) {
 }
 
 function operate (operator, firstNumber, secondNumber) {
-// 
+//Store first clicked number in variable and display
     const numbers = Array.from(document.querySelectorAll('.numbers'));
     for (let i = 0; i < numbers.length; i++) {
         numbers[i].addEventListener('click', () => {
             let firstNumber = numbers[i].textContent;
-            console.log(firstNumber);
+            let display = document.querySelector('#display');
+            display.textContent = firstNumber;
         });
     };
 
