@@ -1,3 +1,7 @@
+window.onload = function() {
+    operate();
+};
+
 function add (firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }
@@ -15,7 +19,34 @@ function divide (firstNumber, secondNumber) {
 }
 
 function operate (operator, firstNumber, secondNumber) {
-    
+//
+
+
+//Store operator value in variable
+    const add = document.querySelector('#add');
+    const subtract = document.querySelector('#subtract');
+    const multiply = document.querySelector('#multiply');
+    const divide = document.querySelector('#divide');
+    add.addEventListener('click', () => {
+        const operator = add;
+        console.log(operator);
+    });
+    subtract.addEventListener('click', () => {
+        const operator = subtract;
+        console.log(operator);
+    });
+    multiply.addEventListener('click', () => {
+        const operator = multiply;;
+        console.log(operator);
+    });
+    divide.addEventListener('click', () => {
+        const operator = divide;
+        console.log(operator);
+    });
+
+
 }
+
+
 
 
