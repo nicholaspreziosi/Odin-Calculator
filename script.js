@@ -9,19 +9,19 @@ window.onload = function() {
 };
 
 function add () {
-    let sum = parseInt(values[values.length - 1]) + parseInt(values[values.length - 2]);
+    let sum = parseFloat(values[values.length - 1]) + parseFloat(values[values.length - 2]);
     let display = document.querySelector('#display');
     display.textContent = sum;
 }
 
 function subtract () {
-    let minus = parseInt(values[values.length - 2]) - parseInt(values[values.length - 1]);
+    let minus = parseFloat(values[values.length - 2]) - parseFloat(values[values.length - 1]);
     let display = document.querySelector('#display');
     display.textContent = minus;
 }
 
 function multiply () {
-    let multiplication = parseInt(values[values.length - 1]) * parseInt(values[values.length - 2]);
+    let multiplication = parseFloat(values[values.length - 1]) * parseFloat(values[values.length - 2]);
     let display = document.querySelector('#display');
     display.textContent = multiplication;
 }
@@ -32,7 +32,7 @@ function divide () {
         display.textContent = 'ERROR';
     }
     else {
-        let minus = parseInt(values[values.length - 2]) / parseInt(values[values.length - 1]);
+        let minus = parseFloat(values[values.length - 2]) / parseFloat(values[values.length - 1]);
         display.textContent = minus;
     }
 }
