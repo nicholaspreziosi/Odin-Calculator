@@ -9,28 +9,49 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="buttons">
-        <div>
-            <button class="numbers" id="0">0</button>
-            <button class="numbers" id="1">1</button>
-            <button class="numbers" id="2">2</button>
-            <button class="numbers" id="3">3</button>
-            <button class="numbers" id="4">4</button>
-            <button class="numbers" id="5">5</button>
-            <button class="numbers" id="6">6</button>
-            <button class="numbers" id="7">7</button>
-            <button class="numbers" id="8">8</button>
-            <button class="numbers" id="9">9</button>
+    <div id="main-container">
+        <div class="buttons">
+            <div id="numbers-container">
+                <div id="display-container" class="numbers-row">
+                    <p id="display">0</p>
+                </div>
+                <div class="numbers-row">
+                    <button class="numbers" id="1">1</button>
+                    <button class="numbers" id="2">2</button>
+                    <button class="operators" id="add">+</button>
+                </div>
+                <div class="numbers-row">
+                    <button class="numbers" id="3">3</button>
+                    <button class="numbers" id="4">4</button>
+                    <button class="operators" id="subtract">-</button>
+                </div>
+                <div class="numbers-row">
+                    <button class="numbers" id="5">5</button>
+                    <button class="numbers" id="6">6</button>
+                    <button class="operators" id="multiply">x</button>
+                </div>
+                <div class="numbers-row">
+                    <button class="numbers" id="7">7</button>
+                    <button class="numbers" id="8">8</button>
+                    <button class="operators" id="divide">÷</button>
+                </div>
+                <div class="numbers-row">
+                    <button class="numbers" id="9">9</button>
+                    <button class="numbers" id="0">0</button>
+                    <button id="equals">=</button>
+                </div>
+
+                <div class="numbers-row">
+                    <button id="clear">CLEAR</button>
+                </div>
+
+    
+            </div>
+
+
         </div>
-        <div>
-            <button class="operators" id="add">+</button>
-            <button class="operators" id="subtract">-</button>
-            <button class="operators" id="multiply">*</button>
-            <button class="operators" id="divide">÷</button>
-        </div>
-        <button id="equals">=</button>
-        <button id="clear">CLEAR</button>
+
     </div>
-    <p id="display">0</p>
+
 </body>
 </html>
