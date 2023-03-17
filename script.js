@@ -4,78 +4,88 @@ let values = [];
 window.onload = function() {
     operate();
     clear();
+    display();
+    getNumber();
+
 };
 
-function add (firstNumber, secondNumber) {
-    let sum = firstNumber + secondNumber;
+function add () {
+    let sum = parseInt(values[values.length - 1]) + parseInt(values[values.length - 2]);
     let display = document.querySelector('#display');
     display.textContent = sum;
 }
 
 function subtract (firstNumber, secondNumber) {
-    return firstNumber - secondNumber;
+    let minus = parseInt(values[values.length - 2]) - parseInt(values[values.length - 1]);
+    let display = document.querySelector('#display');
+    display.textContent = minus;
 }
 
 function multiply (firstNumber, secondNumber) {
-    return firstNumber * secondNumber;
+    let multiplication = parseInt(values[values.length - 1]) * parseInt(values[values.length - 2]);
+    let display = document.querySelector('#display');
+    display.textContent = multiplication;
 }
 
 function divide (firstNumber, secondNumber) {
-    return firstNumber / secondNumber;
+    let minus = parseInt(values[values.length - 2]) / parseInt(values[values.length - 1]);
+    let display = document.querySelector('#display');
+    display.textContent = minus;
 }
 
 function operate (operator, firstNumber, secondNumber) {
-//Store first clicked number in variable and display
-    getFirstNumber();
 
 
-//Store operator value in variable
+
+    const equals = document.querySelector('#equals');
+        equals.addEventListener('click', () => {
+            let display = document.querySelector('#display');
+            values.push(display.textContent);
+            const operators = document.querySelectorAll('.operators');
+            for (let i = 0; i < operators.length; i++) {
+                operators[i].addEventListener('click', () => {
+                    let operator = operators[i].textContent
+                    const equals = document.querySelector('#equals');
+                    equals.addEventListener('click', () => {
+                        if (operator === '+') {
+                            add();
+                        }
+                        else if (operator === '-') {
+                            subtract();
+                        }
+                        else if (operator === 'x') {
+                            multiply();
+                        }
+                        else if (operator === '÷') {
+                            divide();
+                        }
+                    })
+                });
+            };
+    });
+}
+
+
+function getNumber () {
     const operators = document.querySelectorAll('.operators');
-    for (let i = 0; i < operators.length; i++) {
-        operators[i].addEventListener('click', () => {
-            let operator = operators[i].textContent
-            const equals = document.querySelector('#equals');
-            equals.addEventListener('click', () => {
-                console.log(operator);
-                if (operator === '+') {
-                    add();
-                }
-                else if (operator === '-') {
-                    subtract(firstNumber, secondNumber);
-                }
-                else if (operator === '*') {
-                    multiply(firstNumber, secondNumber);
-                }
-                else if (operator === '÷') {
-                    divide(firstNumber, secondNumber);
-                }
-            })
-        });
-    };
-
-
-
-// Perform operate function
-
+    operators.forEach(operator => {
+        operator.addEventListener('click', () => {
+            let display = document.querySelector('#display');
+            values.push(display.textContent);
+            firstNumber = '';
+    })
+    })
 }
 
 
 
-function getFirstNumber () {
-    const numbers = Array.from(document.querySelectorAll('.numbers'));
+function display () {
+    const numbers = document.querySelectorAll('.numbers');
     for (let i = 0; i < numbers.length; i++) {
         numbers[i].addEventListener('click', () => {
             firstNumber += numbers[i].textContent;
             let display = document.querySelector('#display');
             display.textContent = firstNumber;
-            const operators = Array.from(document.querySelectorAll('.operators'));
-                operators.forEach(operator => {
-                    operator.addEventListener('click', () => {
-                        values.push(display.textContent);
-                        firstNumber = '';
-                        console.log(values)
-                })
-            })
         });
     };
 }
