@@ -38,9 +38,6 @@ function divide () {
 }
 
 function operate (operator, firstNumber, secondNumber) {
-
-
-
     const equals = document.querySelector('#equals');
         equals.addEventListener('click', () => {
             let display = document.querySelector('#display');
@@ -70,29 +67,6 @@ function operate (operator, firstNumber, secondNumber) {
 }
 
 
-function updateDisplay() {
-    const operators = document.querySelectorAll('.operators');
-    operators.forEach(operator => {
-        if (values.length >= 2) {
-            if (operator === '+') {
-                add();
-                values.push(display.textContent);
-            }
-            else if (operator === '-') {
-                subtract();
-            }
-            else if (operator === 'x') {
-                multiply();
-            }
-            else if (operator === '÷') {
-                divide();
-            }
-        }
-        else {
-    
-        }
-    })
-}
 
 
 function getNumber () {
