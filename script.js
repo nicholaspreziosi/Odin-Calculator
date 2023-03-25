@@ -73,9 +73,6 @@ function operate (operator, firstNumber, secondNumber) {
     });
 }
 
-
-
-
 function getNumber () {
     const display = document.querySelector('#display')
     values.push(display.textContent)
@@ -87,6 +84,7 @@ function display () {
     const display = document.querySelector('#display')
     numbers.forEach(number => {
         number.addEventListener('click', () => {
+            limitDecimal();
             num += number.textContent;
             display.textContent = num;
         });
@@ -102,4 +100,15 @@ function clear () {
             values = [];
             operatorValue = [];
         });
+}
+
+function limitDecimal () {
+    let display = document.querySelector('#display').textContent;
+    let decimal = document.querySelector('#decimal')
+    if (display.includes('.')) {
+        decimal.disabled = true;
+    }
+    else {
+        decimal.disabled = false;
+    }
 }
