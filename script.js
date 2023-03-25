@@ -3,28 +3,29 @@ let values = [];
 let operatorValue = [];
 
 window.onload = function() {
-    operate();
-    clear();
-    display();
-    getNumber();
-    disableDecimal();
+
 };
 
 function add () {
     let sum = parseFloat(values[values.length - 2]) + parseFloat(values[values.length - 1]);
+    values = [];
+    values.push(sum);
     let display = document.querySelector('#display');
     display.textContent = sum;
-    console.log(values);
 }
 
 function subtract () {
     let minus = parseFloat(values[values.length - 2]) - parseFloat(values[values.length - 1]);
+    values = [];
+    values.push(minus);
     let display = document.querySelector('#display');
     display.textContent = minus;
 }
 
 function multiply () {
     let multiplication = parseFloat(values[values.length - 1]) * parseFloat(values[values.length - 2]);
+    values = [];
+    values.push(multiplication);
     let display = document.querySelector('#display');
     display.textContent = multiplication;
 }
@@ -35,8 +36,10 @@ function divide () {
         display.textContent = 'ERROR';
     }
     else {
-        let minus = parseFloat(values[values.length - 2]) / parseFloat(values[values.length - 1]);
-        display.textContent = minus;
+        let divide = parseFloat(values[values.length - 2]) / parseFloat(values[values.length - 1]);
+        values = [];
+        values.push(divide);
+        display.textContent = divide;
     }
 }
 
