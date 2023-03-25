@@ -9,6 +9,7 @@ body {
     justify-content: center;
     width: 550px;
     padding: 48px;
+    filter: drop-shadow(10px 10px 20px black);
 }
 
 #numbers-container {

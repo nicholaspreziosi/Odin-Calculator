@@ -1,15 +1,16 @@
 let firstNumber = '';
-let values = [];
+let values = [0];
 
 window.onload = function() {
     operate();
     clear();
     display();
     getNumber();
+    disableDecimal();
 };
 
 function add () {
-    let sum = parseFloat(values[values.length - 1]) + parseFloat(values[values.length - 2]);
+    let sum = parseFloat(values[values.length - 2]) + parseFloat(values[values.length - 1]);
     let display = document.querySelector('#display');
     display.textContent = sum;
 }
@@ -38,8 +39,6 @@ function divide () {
 }
 
 function operate (operator, firstNumber, secondNumber) {
-    const equals = document.querySelector('#equals');
-        equals.addEventListener('click', () => {
             let display = document.querySelector('#display');
             values.push(display.textContent);
             const operators = document.querySelectorAll('.operators');
@@ -63,8 +62,7 @@ function operate (operator, firstNumber, secondNumber) {
                     })
                 });
             };
-    });
-}
+    };
 
 
 
@@ -100,6 +98,16 @@ function clear () {
         let display = document.querySelector('#display');
         display.textContent = 0;
         firstNumber = '';
-        values = [];
+        values = [0];
     });
+}
+
+function disableDecimal () {
+    let display = document.querySelector('#display');
+    if (display.textContent.includes('.')) {
+        document.getElementById('decimal').disabled = true;
+    }
+    else {
+        document.getElementById('decimal').disabled = false;
+    }
 }
