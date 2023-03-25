@@ -34,8 +34,23 @@ function multiply () {
 
 function divide () {
     let display = document.querySelector('#display');
+    const operators = document.querySelectorAll('.operators');
+    const clear = document.querySelector('#clear');
+    const numbers = document.querySelectorAll('.numbers');
     if (values[values.length - 1] === '0') {
-        display.textContent = 'ERROR';
+        display.textContent = 'ERROR, PLZ CLEAR';
+        operators.forEach(operator => {
+            operator.disabled = true;
+            clear.addEventListener('click', () => {
+                operator.disabled = false;
+            })
+        })
+        numbers.forEach(number => {
+            number.disabled = true;
+            clear.addEventListener('click', () => {
+                number.disabled = false;
+            })
+        })
     }
     else {
         let divide = parseFloat(values[values.length - 2]) / parseFloat(values[values.length - 1]);
