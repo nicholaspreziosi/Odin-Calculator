@@ -1,9 +1,11 @@
-let firstNumber = '';
+let num = '';
 let values = [];
 let operatorValue = [];
 
 window.onload = function() {
-
+    operate();
+    display();
+    clear();
 };
 
 function add () {
@@ -44,28 +46,32 @@ function divide () {
 }
 
 function operate (operator, firstNumber, secondNumber) {
-            let display = document.querySelector('#display');
-            values.push(display.textContent);
-            const operators = document.querySelectorAll('.operators');
-            for (let i = 0; i < operators.length; i++) {
-                operators[i].addEventListener('click', () => {
-                    let operator = operators[i].textContent
-                        if (operator === '+') {
-                            add();
-                        }
-                        else if (operator === '-') {
-                            subtract();
-                        }
-                        else if (operator === 'x') {
-                            multiply();
-                        }
-                        else if (operator === '÷') {
-                            divide();
-                        }
-                    })
-            };
-            console.log(values);
-    };
+    const operators = document.querySelectorAll('.operators');
+    const display = document.querySelector('#display')
+    operators.forEach(operator => {
+        operator.addEventListener('click', () => {
+            operatorValue.push(operator.textContent);
+            if (values.length === 0) {
+                getNumber();
+            }
+            else if (values.length >= 1) {
+                getNumber();
+                if (operatorValue[operatorValue.length - 2] === '+') {
+                    add();
+                }
+                else if (operatorValue[operatorValue.length - 2] === '-') {
+                    subtract();
+                }
+                else if (operatorValue[operatorValue.length - 2] === 'x') {     
+                    multiply();
+                }
+                else if (operatorValue[operatorValue.length - 2] === '÷') {
+                    divide();
+                }
+            }
+        });
+    });
+}
 
 
 
@@ -75,8 +81,6 @@ function getNumber () {
     values.push(display.textContent)
     num = '';
 }
-
-
 
 function display () {
     const numbers = document.querySelectorAll('.numbers');
@@ -88,7 +92,6 @@ function display () {
         });
     });
 }
-
 
 function clear () {
     const clear = document.querySelector('#clear');
