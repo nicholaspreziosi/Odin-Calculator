@@ -1,5 +1,6 @@
 let firstNumber = '';
-let values = [0];
+let values = [];
+let operatorValue = [];
 
 window.onload = function() {
     operate();
@@ -13,6 +14,7 @@ function add () {
     let sum = parseFloat(values[values.length - 2]) + parseFloat(values[values.length - 1]);
     let display = document.querySelector('#display');
     display.textContent = sum;
+    console.log(values);
 }
 
 function subtract () {
@@ -45,8 +47,6 @@ function operate (operator, firstNumber, secondNumber) {
             for (let i = 0; i < operators.length; i++) {
                 operators[i].addEventListener('click', () => {
                     let operator = operators[i].textContent
-                    const equals = document.querySelector('#equals');
-                    equals.addEventListener('click', () => {
                         if (operator === '+') {
                             add();
                         }
@@ -60,54 +60,40 @@ function operate (operator, firstNumber, secondNumber) {
                             divide();
                         }
                     })
-                });
             };
+            console.log(values);
     };
 
 
 
 
 function getNumber () {
-    const operators = document.querySelectorAll('.operators');
-    operators.forEach(operator => {
-        operator.addEventListener('click', () => {
-            let display = document.querySelector('#display');
-            values.push(display.textContent);
-            firstNumber = '';
-    })
-    })
+    const display = document.querySelector('#display')
+    values.push(display.textContent)
+    num = '';
 }
 
 
 
 function display () {
     const numbers = document.querySelectorAll('.numbers');
-    for (let i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener('click', () => {
-            firstNumber += numbers[i].textContent;
-            let display = document.querySelector('#display');
-            display.textContent = firstNumber;
+    const display = document.querySelector('#display')
+    numbers.forEach(number => {
+        number.addEventListener('click', () => {
+            num += number.textContent;
+            display.textContent = num;
         });
-    };
+    });
 }
 
 
 function clear () {
     const clear = document.querySelector('#clear');
+    const display = document.querySelector('#display')
     clear.addEventListener('click', () => {
-        let display = document.querySelector('#display');
-        display.textContent = 0;
-        firstNumber = '';
-        values = [0];
-    });
-}
-
-function disableDecimal () {
-    let display = document.querySelector('#display');
-    if (display.textContent.includes('.')) {
-        document.getElementById('decimal').disabled = true;
-    }
-    else {
-        document.getElementById('decimal').disabled = false;
-    }
+            display.textContent = 0;
+            num = ''
+            values = [];
+            operatorValue = [];
+        });
 }
