@@ -6,6 +6,7 @@ window.onload = function() {
     operate();
     display();
     clear();
+    keyboardSupport();
 };
 
 function add () {
@@ -13,7 +14,13 @@ function add () {
     values = [];
     values.push(sum);
     let display = document.querySelector('#display');
-    display.textContent = sum;
+    if (sum % 1 !== 0) {
+        let roundedAnswer = (Math.round(sum * 100000) / 100000).toFixed(5);
+        display.textContent = roundedAnswer;
+    }
+    else {
+        display.textContent = sum;
+    }
 }
 
 function subtract () {
@@ -21,42 +28,54 @@ function subtract () {
     values = [];
     values.push(minus);
     let display = document.querySelector('#display');
-    display.textContent = minus;
+    if (minus % 1 !== 0) {
+        let roundedAnswer = (Math.round(minus * 100000) / 100000).toFixed(5);
+        display.textContent = roundedAnswer;
+    }
+    else {
+        display.textContent = minus;
+    }
 }
 
 function multiply () {
-    let multiplication = parseFloat(values[values.length - 1]) * parseFloat(values[values.length - 2]);
+    let multiplication = (parseFloat(values[values.length - 1]) * parseFloat(values[values.length - 2]));
     values = [];
     values.push(multiplication);
     let display = document.querySelector('#display');
-    display.textContent = multiplication;
+    if (multiplication % 1 !== 0) {
+        let roundedAnswer = (Math.round(multiplication * 100000) / 100000).toFixed(5);
+        display.textContent = roundedAnswer;
+    }
+    else {
+        display.textContent = multiplication;
+    }
 }
 
 function divide () {
     let display = document.querySelector('#display');
-    const operators = document.querySelectorAll('.operators');
+    const btn = document.querySelectorAll('.btn');
     const clear = document.querySelector('#clear');
     const numbers = document.querySelectorAll('.numbers');
     if (values[values.length - 1] === '0') {
         display.textContent = 'ERROR, PLZ CLEAR';
-        operators.forEach(operator => {
-            operator.disabled = true;
+        btn.forEach(button => {
+            button.disabled = true;
             clear.addEventListener('click', () => {
-                operator.disabled = false;
-            })
-        })
-        numbers.forEach(number => {
-            number.disabled = true;
-            clear.addEventListener('click', () => {
-                number.disabled = false;
+                button.disabled = false;
             })
         })
     }
     else {
-        let divide = parseFloat(values[values.length - 2]) / parseFloat(values[values.length - 1]);
+        let divide = (parseFloat(values[values.length - 2]) / parseFloat(values[values.length - 1]));
         values = [];
         values.push(divide);
-        display.textContent = divide;
+        if (divide % 1 !== 0) {
+            let roundedAnswer = (Math.round(divide * 100000) / 100000).toFixed(5);
+            display.textContent = roundedAnswer;
+        }
+        else {
+            display.textContent = divide;
+        }
     }
 }
 
@@ -96,6 +115,7 @@ function getNumber () {
 
 function display () {
     const numbers = document.querySelectorAll('.numbers');
+    const backspace = document.querySelector('#backspace')
     const display = document.querySelector('#display')
     numbers.forEach(number => {
         number.addEventListener('click', () => {
@@ -103,6 +123,11 @@ function display () {
             num += number.textContent;
             display.textContent = num;
         });
+    });
+    backspace.addEventListener('click', () => {
+        num = num.slice(0,-1);
+        console.log(num);
+        display.textContent = num;
     });
 }
 
@@ -125,5 +150,68 @@ function limitDecimal () {
     }
     else {
         decimal.disabled = false;
+    }
+}
+
+function keyboardSupport () {
+    document.onkeydown = function(evt) {
+        var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+        if (keyCode === 49) {
+            document.querySelector('#one').click();
+        }
+        else if (keyCode === 50) {
+            document.querySelector('#two').click();
+        }
+        else if (keyCode === 51) {
+            document.querySelector('#three').click();
+        }
+        else if (keyCode === 52) {
+            document.querySelector('#four').click();
+        }
+        else if (keyCode === 53) {
+            document.querySelector('#five').click();
+        }
+        else if (keyCode === 54) {
+            document.querySelector('#six').click();
+        }
+        else if (keyCode === 55) {
+            document.querySelector('#seven').click();
+        }
+        else if (keyCode === 56) {
+            document.querySelector('#eight').click();
+        }
+        else if (keyCode === 57) {
+            document.querySelector('#nine').click();
+        }
+        else if (keyCode === 48) {
+            document.querySelector('#zero').click();
+        }
+        else if (keyCode === 190) {
+            document.querySelector('#decimal').click();
+        }
+        else if (keyCode === 187) {
+            document.querySelector('#equals').click();
+        }
+        else if ((keyCode === 8) || (keyCode === 37)) {
+            document.querySelector('#backspace').click();
+        }
+        else if (keyCode === 27) {
+            document.querySelector('#clear').click();
+        }
+        else if (keyCode === 189) {
+            document.querySelector('#subtract').click();
+        }
+        else if (keyCode === 191) {
+            document.querySelector('#divide').click();
+        }
+        else if (keyCode === 88) {
+            document.querySelector('#multiply').click();
+        }
+        else if ((e.shiftKey === true) && (keyCode === 187)) {
+            document.querySelector('#add').click();
+        }
+        else {
+            return true;
+        }
     }
 }

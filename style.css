@@ -44,7 +44,7 @@ button {
     height: 100px;
 }
 
-.numbers, #clear {
+.numbers, #clear, #backspace {
     background-color: gray;
 }
 
@@ -69,8 +69,9 @@ button {
     padding: 12px;
     overflow: hidden;
     border-radius: 12px;
+    overflow: scroll;
 }
 
-#clear {
-    width: 436px;
+#clear, #backspace{
+    width: 212px;
 }
