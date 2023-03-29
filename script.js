@@ -16,7 +16,7 @@ function add () {
     let display = document.querySelector('#display');
     if (sum % 1 !== 0) {
         let roundedAnswer = (Math.round(sum * 100000) / 100000).toFixed(5);
-        display.textContent = roundedAnswer;
+        display.textContent = parseFloat(roundedAnswer);
     }
     else {
         display.textContent = sum;
@@ -30,7 +30,7 @@ function subtract () {
     let display = document.querySelector('#display');
     if (minus % 1 !== 0) {
         let roundedAnswer = (Math.round(minus * 100000) / 100000).toFixed(5);
-        display.textContent = roundedAnswer;
+        display.textContent = parseFloat(roundedAnswer);
     }
     else {
         display.textContent = minus;
@@ -44,7 +44,7 @@ function multiply () {
     let display = document.querySelector('#display');
     if (multiplication % 1 !== 0) {
         let roundedAnswer = (Math.round(multiplication * 100000) / 100000).toFixed(5);
-        display.textContent = roundedAnswer;
+        display.textContent = parseFloat(roundedAnswer);
     }
     else {
         display.textContent = multiplication;
@@ -71,7 +71,7 @@ function divide () {
         values.push(divide);
         if (divide % 1 !== 0) {
             let roundedAnswer = (Math.round(divide * 100000) / 100000).toFixed(5);
-            display.textContent = roundedAnswer;
+            display.textContent = parseFloat(roundedAnswer);
         }
         else {
             display.textContent = divide;
