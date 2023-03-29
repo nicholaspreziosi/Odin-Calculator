@@ -189,7 +189,7 @@ function keyboardSupport () {
         else if (keyCode === 190) {
             document.querySelector('#decimal').click();
         }
-        else if (keyCode === 187) {
+        else if (keyCode === 13) {
             document.querySelector('#equals').click();
         }
         else if ((keyCode === 8) || (keyCode === 37)) {
@@ -207,7 +207,7 @@ function keyboardSupport () {
         else if (keyCode === 88) {
             document.querySelector('#multiply').click();
         }
-        else if ((e.shiftKey === true) && (keyCode === 187)) {
+        else if (keyCode === 187) {
             document.querySelector('#add').click();
         }
         else {
